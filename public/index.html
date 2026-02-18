@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon Guess Game</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>猜猜这只宝可梦</h1>
+      <p id="hint">加载中...</p>
+      <img id="sprite" alt="pokemon" />
+      <form id="guess-form">
+        <input id="guess-input" placeholder="输入英文名，如 pikachu" autocomplete="off" />
+        <button type="submit">猜测</button>
+      </form>
+      <p id="result"></p>
+      <button id="next">下一只</button>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

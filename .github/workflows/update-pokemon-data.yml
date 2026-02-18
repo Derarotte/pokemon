@@ -1,0 +1,36 @@
+name: Update Pokemon Data
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Fetch latest data
+        run: node scripts/fetch-pokemon-data.mjs
+
+      - name: Commit and push
+        run: |
+          git config user.name "Derarotte"
+          git config user.email "w2107489407@gmail.com"
+          git add data/pokemon.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "chore(data): update pokemon dataset"
+          git push

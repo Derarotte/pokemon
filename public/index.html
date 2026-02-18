@@ -3,21 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pokemon Guess Game</title>
+    <title>Pokemon Battle</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <main class="app">
-      <h1>猜猜这只宝可梦</h1>
-      <p id="hint">加载中...</p>
-      <img id="sprite" alt="pokemon" />
-      <form id="guess-form">
-        <input id="guess-input" placeholder="输入英文名，如 pikachu" autocomplete="off" />
-        <button type="submit">猜测</button>
-      </form>
-      <p id="result"></p>
-      <button id="next">下一只</button>
+      <header class="topbar">
+        <h1>宝可梦对战</h1>
+        <p id="battle-status">载入中...</p>
+      </header>
+
+      <section class="arena">
+        <article class="card player" id="player-card">
+          <div class="card-head">
+            <h2 id="player-name">玩家</h2>
+            <span id="player-types"></span>
+          </div>
+          <img id="player-sprite" alt="player pokemon" />
+          <div class="hp-wrap">
+            <div class="hp-label"><span>HP</span><span id="player-hp-text">0/0</span></div>
+            <div class="hp-bar"><div id="player-hp-fill"></div></div>
+          </div>
+        </article>
+
+        <article class="card cpu" id="cpu-card">
+          <div class="card-head">
+            <h2 id="cpu-name">电脑</h2>
+            <span id="cpu-types"></span>
+          </div>
+          <img id="cpu-sprite" alt="cpu pokemon" />
+          <div class="hp-wrap">
+            <div class="hp-label"><span>HP</span><span id="cpu-hp-text">0/0</span></div>
+            <div class="hp-bar"><div id="cpu-hp-fill"></div></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="controls">
+        <button class="move" data-move="quick">快速攻击</button>
+        <button class="move" data-move="heavy">重击</button>
+        <button class="move" data-move="heal">治疗</button>
+        <button id="restart" class="ghost">重新开局</button>
+      </section>
+
+      <section class="log-wrap">
+        <h3>战斗日志</h3>
+        <ul id="battle-log"></ul>
+      </section>
     </main>
+
     <script type="module" src="./app.js"></script>
   </body>
 </html>
